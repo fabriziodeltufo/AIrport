@@ -7,7 +7,7 @@ grey: #b4b4b4
 */
 
 
-/* reset */
+/* ! RESET */
 
 * {
     box-sizing: border-box;
@@ -28,13 +28,29 @@ header {
     background-color: #5b17c9;
 }
 
-.container{
+.container {
     padding: 10px;
     /* border: 1px solid red; */
 }
 
 
-/* form & field */
+
+/* ! DATASET */
+
+[data-state="wizard"] {
+    background-color: #92ebf1;
+}
+
+[data-state="wizard"] section:not(.wizard),
+[data-state="travel"] section:not(.travel),
+[data-state="loading"] section:not(.loading) {
+    display: none;
+}
+
+
+
+/* ! FORM & FIELD */
+
 .user-data {
     max-width: 520px;
     margin: 0 auto;
@@ -49,10 +65,10 @@ header {
     margin-bottom: 8px;
     margin-top: 25px;
     text-align: center;
-    padding-top:20px
+    padding-top: 20px
 }
 
-.field, 
+.field,
 .field-group {
     background-color: #fff;
     padding: 16px;
@@ -63,32 +79,20 @@ header {
     /* border: 1px solid red; */
 }
 
-.field-group{
+.field-group {
     display: flex;
     justify-content: center;
     gap: 30px;
 }
 
-.btn{
+.btn {
     padding: 16px 24px;
     background-color: #5b17c9;
     color: white;
-    border:none;
+    border: none;
     border-radius: 24px;
     font-size: 16px;
     font-weight: 700;
     width: 100%;
     margin-top: 100px;
-}
-
-
-
-[data-state="wizard"] {
-    background-color: #92ebf1;
-}
-
-[data-state="wizard"] section:not(.wizard),
-[data-state="travel"] section:not(.travel),
-[data-state="loading"] section:not(.loading) {
-    display: none;
 }
