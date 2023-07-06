@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it" data-state="wizard">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIrport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>AIrport</h1>
+        <p>Pianifica con GPT il tuo week end</p>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="wizard">
+                <div class="user-data">
+                    <form>
+                        <label class="label-text">Dove vuoi andare oggi ?</label>
+                        <input class="field" type="text" placeholder="Inserisci una destinazione">
+
+                        <label class="label-text">In quale stagione ?</label>
+                        <fieldset class="field-group">
+                            <label><input type="radio" name="season"> 🌸 Primavera</label>
+                            <label><input type="radio" name="season"> ☀️ Estate</label>
+                            <label><input type="radio" name="season"> 🍁 Autunno</label>
+                            <label><input type="radio" name="season"> ❄️ Inverno</label>
+                        </fieldset>
+
+                        <label class="label-text">Con chi viaggi ?</label>
+                        <select class="field" name="company">
+                            <option value="da solo">da solo</option>
+                            <option value="con amici">con amici</option>
+                            <option value="con partner">con partner</option>
+                        </select>
+
+                        <button class="btn">Crea Itinerario</button>
+                    </form>
+                </div>
+            </section>
+
+
+            <section class="travel">
+                travel
+            </section>
+            <section class="loading">
+                Loading ...
+            </section>
+        </div>
+    </main>
+
+
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
