@@ -26,11 +26,19 @@ header {
     color: yellowgreen;
     text-align: center;
     background-color: #5b17c9;
+    transition: background-color 0.4s ease-in-out;
 }
 
+header h1{
+    font-size: 42px;
+    transition: font-size 0.4s ease-in-out;
+}
+
+
 .container {
-    padding: 10px;
-    /* border: 1px solid red; */
+    max-width: 992px;
+    padding: 24px;
+    margin: 0 auto;
 }
 
 
@@ -41,6 +49,15 @@ header {
     background-color: #92ebf1;
 }
 
+[data-state="travel"] header {
+    background-color: yellowgreen;
+    color: #5b17c9;
+}
+
+[data-state="travel"] header p {
+    display: none;
+}
+
 [data-state="wizard"] section:not(.wizard),
 [data-state="travel"] section:not(.travel),
 [data-state="loading"] section:not(.loading) {
@@ -49,7 +66,7 @@ header {
 
 
 
-/* ! FORM & FIELD */
+/* ! WIZARD SECTION */
 
 .user-data {
     max-width: 520px;
@@ -95,4 +112,144 @@ header {
     font-weight: 700;
     width: 100%;
     margin-top: 100px;
+}
+
+
+
+/* ! TRAVEL SECTION */
+
+.travel {
+    /* background-color: red; */
+}
+
+.travel-head {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.travel-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    padding: 18px;
+    color: white;
+    border: 1px solid yellowgreen;
+    border-radius: 24px;
+}
+
+.travel-title b {
+    text-transform: uppercase;
+    color: #92ebf1;
+}
+
+.travel-name {
+    font-size: 36px;
+}
+
+.travel-detail {}
+
+
+.travel-image {
+    width: 30%;
+    height: 124px;
+    overflow: hidden;
+    border-radius: 24px;
+    animation: colorLoop 1s infinite alternate;
+}
+
+.travel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.travel-content {
+    display: flex;
+    gap: 24px;
+}
+
+.travel-plan {
+    width: 50%;
+}
+
+.travel-map {
+    width: 50%;
+    background-color: violet;
+    border-radius: 24px;
+}
+
+
+
+/* ! CARD SECTION */
+
+.cards>.card {
+    margin-bottom: 24px;
+}
+
+.card {
+    padding: 12px;
+    background-color: yellowgreen;
+    border-radius: 24px;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: trasform 0.2s ease-in-out;
+}
+
+.card-day {
+    font-weight: 700;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #5b17c9;
+}
+
+
+/* ! LOADING SECTION */
+
+.loading{
+    text-align: center;
+}
+
+.loading img{
+    max-width: 250px;
+}
+
+
+
+/* ! MEDIA SCREEN  */
+
+@media screen and (max-width: 540px) {
+
+    .travel-head,
+    .travel-content {
+        flex-direction: column;
+    }
+
+    .travel-head>*,
+    .travel-content>* {
+        width: 100%;
+    }
+
+    .travel-image{
+        height: 100%;
+    }
+
+}
+
+
+/* ! ANIMATION  */
+
+@keyframes colorLoop{
+
+  0% {background-color: rgba(178,244,91,0.4);}
+ 
+  100% {background-color: rgba(178, 244, 91, 0.1);}
+
 }

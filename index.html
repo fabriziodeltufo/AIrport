@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" data-state="wizard">
+<html lang="it" data-state="loading">
 
 <head>
     <meta charset="UTF-8">
@@ -23,22 +23,24 @@
     <main>
         <div class="container">
 
+            <!-- WIZARD SECTION - STARTING SCREEN -->
             <section class="wizard">
                 <div class="user-data">
                     <form>
                         <label class="label-text">Dove vuoi andare oggi ?</label>
-                        <input class="field" type="text" placeholder="Inserisci una destinazione">
+                        <input required class="field" type="text" name="location" placeholder="Inserisci una destinazione">
 
                         <label class="label-text">In quale stagione ?</label>
                         <fieldset class="field-group">
-                            <label><input type="radio" name="season"> 🌸 Primavera</label>
-                            <label><input type="radio" name="season"> ☀️ Estate</label>
-                            <label><input type="radio" name="season"> 🍁 Autunno</label>
-                            <label><input type="radio" name="season"> ❄️ Inverno</label>
+                            <label><input required type="radio" name="season" value="primavera"> 🌸 Primavera</label>
+                            <label><input required type="radio" name="season" value="estate"> ☀️ Estate</label>
+                            <label><input required type="radio" name="season" value="autunno"> 🍁 Autunno</label>
+                            <label><input required type="radio" name="season" value="inverno"> ❄️ Inverno</label>
                         </fieldset>
 
                         <label class="label-text">Con chi viaggi ?</label>
-                        <select class="field" name="company">
+                        <select required class="field" name="company">
+                            <option value="" selected disabled >Scegli con chi vai</option>
                             <option value="da solo">da solo</option>
                             <option value="con amici">con amici</option>
                             <option value="con partner">con partner</option>
@@ -50,12 +52,64 @@
             </section>
 
 
+
+            <!-- TRAVEL SECTION - RESULTS SCREEN -->
             <section class="travel">
-                travel
+
+                <div class="travel-head">
+
+                    <div class="travel-title">
+
+                        <div class="travel-name">
+                            il tuo viaggio a <b>ROMA</b>
+                        </div>
+
+                        <div class="travel-detail">
+                            in<b> ESTATE</b>,<b> CON AMICI</b>
+                        </div>
+
+                    </div>
+
+                    <div class="travel-image">
+                        <img src="https://unsplash.it/512" alt="immagine di viaggio">
+                    </div>
+
+                </div>
+
+                <div class="travel-content">
+                    <div class="travel-plan">
+                        <div class="cards">
+                            <div class="card">
+                                <div class="card-day">giorno 1</div>
+                                <div class="card-title">mangia e bevi</div>
+                                <p><b>Luoghi:</b>lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc  lorem ipsum etc etcetcetc</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-day">giorno 1</div>
+                                <div class="card-title">mangia e bevi</div>
+                                <p><b>Luoghi:</b>lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="travel-map">
+                        <div id="map"></div>
+                        <!-- MAP -->
+                    </div>
+
+                </div>
+
             </section>
+
+
+
+            <!-- LOADING SECTION - LOADING SCREEN -->
             <section class="loading">
-                Loading ...
+                <img src="images/loader.gif" alt="Loading...">
             </section>
+
         </div>
     </main>
 
