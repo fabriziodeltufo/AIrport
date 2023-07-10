@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" data-state="loading">
+<html lang="it" data-state="travel">
 
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,8 @@
                 <div class="user-data">
                     <form>
                         <label class="label-text">Dove vuoi andare oggi ?</label>
-                        <input required class="field" type="text" name="location" placeholder="Inserisci una destinazione">
+                        <input required class="field" type="text" name="location"
+                            placeholder="Inserisci una destinazione">
 
                         <label class="label-text">In quale stagione ?</label>
                         <fieldset class="field-group">
@@ -40,7 +41,7 @@
 
                         <label class="label-text">Con chi viaggi ?</label>
                         <select required class="field" name="company">
-                            <option value="" selected disabled >Scegli con chi vai</option>
+                            <option value="" selected disabled>Scegli con chi vai</option>
                             <option value="da solo">da solo</option>
                             <option value="con amici">con amici</option>
                             <option value="con partner">con partner</option>
@@ -51,6 +52,11 @@
                 </div>
             </section>
 
+
+            <!-- LOADING SECTION - LOADING SCREEN -->
+            <section class="loading">
+                <img src="images/loader.gif" alt="Loading...">
+            </section>
 
 
             <!-- TRAVEL SECTION - RESULTS SCREEN -->
@@ -79,16 +85,39 @@
                 <div class="travel-content">
                     <div class="travel-plan">
                         <div class="cards">
-                            <div class="card">
-                                <div class="card-day">giorno 1</div>
-                                <div class="card-title">mangia e bevi</div>
-                                <p><b>Luoghi:</b>lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc  lorem ipsum etc etcetcetc</p>
-                            </div>
 
                             <div class="card">
                                 <div class="card-day">giorno 1</div>
                                 <div class="card-title">mangia e bevi</div>
-                                <p><b>Luoghi:</b>lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc</p>
+                                <div class="card-content">
+                                    <p>
+                                        <b>Luoghi:</b>
+                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                        etcetcetc
+                                    </p>
+                                    <p>
+                                        <b>Curiosita':</b>
+                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                        etcetcetc
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-day">giorno 2</div>
+                                <div class="card-title">nuota e canta</div>
+                                <div class="card-content">
+                                    <p>
+                                        <b>Luoghi:</b>
+                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                        etcetcetc
+                                    </p>
+                                    <p>
+                                        <b>Curiosita':</b>
+                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                        etcetcetc
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
@@ -96,19 +125,13 @@
 
                     <div class="travel-map">
                         <div id="map"></div>
-                        <!-- MAP -->
+                        MAP
                     </div>
 
                 </div>
 
             </section>
 
-
-
-            <!-- LOADING SECTION - LOADING SCREEN -->
-            <section class="loading">
-                <img src="images/loader.gif" alt="Loading...">
-            </section>
 
         </div>
     </main>

@@ -29,7 +29,7 @@ header {
     transition: background-color 0.4s ease-in-out;
 }
 
-header h1{
+header h1 {
     font-size: 42px;
     transition: font-size 0.4s ease-in-out;
 }
@@ -118,9 +118,7 @@ header h1{
 
 /* ! TRAVEL SECTION */
 
-.travel {
-    /* background-color: red; */
-}
+/* .travel{} */
 
 .travel-head {
     display: flex;
@@ -148,7 +146,7 @@ header h1{
     font-size: 36px;
 }
 
-.travel-detail {}
+/* .travel-detail {} */
 
 
 .travel-image {
@@ -195,7 +193,7 @@ header h1{
     border-radius: 24px;
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.05);
     transition: trasform 0.2s ease-in-out;
 }
@@ -213,11 +211,11 @@ header h1{
 
 /* ! LOADING SECTION */
 
-.loading{
+.loading {
     text-align: center;
 }
 
-.loading img{
+.loading img {
     max-width: 250px;
 }
 
@@ -237,7 +235,7 @@ header h1{
         width: 100%;
     }
 
-    .travel-image{
+    .travel-image {
         height: 100%;
     }
 
@@ -246,10 +244,14 @@ header h1{
 
 /* ! ANIMATION  */
 
-@keyframes colorLoop{
+@keyframes colorLoop {
 
-  0% {background-color: rgba(178,244,91,0.4);}
- 
-  100% {background-color: rgba(178, 244, 91, 0.1);}
+    0% {
+        background-color: rgba(178, 244, 91, 0.4);
+    }
+
+    100% {
+        background-color: rgba(178, 244, 91, 0.1);
+    }
 
 }
