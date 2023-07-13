@@ -4,11 +4,11 @@ const OPENAI = {
     API_BASE_URL: 'https://api.openai.com/v1',
     GPT_MODEL: 'gpt-3.5-turbo',
     CHAT_ENDPOINT: '/chat/completions',
-    IMAGE_ENDPOINT: 'images/generations'
+    IMAGE_ENDPOINT: '/images/generations'
 }
 
 
-const form = document.querySelector('.form');
+const form = document.querySelector('form');
 const travel = document.querySelector('.travel');
 const cards = document.querySelector('.cards');
 const template = document.querySelector('template');
@@ -42,14 +42,14 @@ function setTravelFormData() {
 
 
 
-function createTravel() {
+async function createTravel() {
 
     setAppState('loading');
 
     const prompt = `\
-    Organizza un weekend di 3 giorni a ${travelFormData.location}. Siamo in ${travelFormData.season}. Sarò ${travelFormData.company}. 
-    Per ogni tappa dammi un titolo spiritoso, una lista di luoghi da visitare con le coordinate e qualche 
-    curiosità del luogo. Le tue risposte sono solo in formato JSON come questo esempio:
+    Organizza un weekend di 2 giorni a ${travelFormData.location} in ${travelFormData.season}. 
+    Per ogni tappa dammi 1 titolo spiritoso, 2 luoghi da visitare con le coordinate e qualche 
+    curiosità del luoghi. Le tue risposte sono solo in formato JSON come questo esempio:
     
     ###
     
@@ -82,20 +82,22 @@ function createTravel() {
     });
 
     travelPlan = JSON.parse(travelContentResponse.choices[0].message.content);
+    console.log(travelPlan);
 
     renderTravelContent();
     setAppState('travel');
 
     const travelImageResponse = await makeRequest(OPENAI.IMAGE_ENDPOINT, {
 
-        prompt: `Un weekend a ${travelFormData.location} in ${travelFormData.season} ${travelFormData.company}`,
+        prompt: `Un weekend a ${travelFormData.location} in ${travelFormData.season} `,
         n: 1,
         size: '512x512'
     });
 
     travelPlan.imageUrl = travelImageResponse.data[0].url;
+    console.log(travelPlan.imageUrl);
 
-    travel.querySelector('.travel-image').innerHTML = `<img src="${travelPlan.imageUrl}" alt="foto viaggio"`;
+    travel.querySelector('.travel-image').innerHTML = `<img src="${travelPlan.imageUrl}" alt="foto viaggio">`;
 }
 
 
@@ -103,16 +105,70 @@ function createTravel() {
 function renderTravelContent() {
     renderTravelTitle();
     renderTravelStage();
-    
-    // renderTravelMap();
+
+    renderTravelMap();
 }
+
+
+function renderTravelMap() {
+    tomtomMap = tt.map({
+        key: TOMTOM_KEY,
+        container: 'map'  // div id #map 
+    });
+
+    const bounds = new tt.LngLatBounds();
+    travelPlan.stages.forEach(function (stage, index) {
+        stage.places.forEach(function (place) {
+            renderPlaceMarker(place, index);
+            bounds.extend(place.coordinates);
+        });
+    });
+
+
+    tomtomMap.once('idle', function () {
+        tomtomMap.fitBounds(bounds);
+    });
+
+}
+
+function renderPlaceMarker(place, index) {
+
+    const marker = document.createElement('div');
+    marker.innerHTML = '<img src="images/marker.svg" alt="marker icon"> ';
+    marker.dataset.cardId = index;
+    marker.addEventListener('mouseenter', onCardMouseEnter);
+    marker.addEventListener('mouseleave', onCardMouseLeave);
+
+    const popup = new tt.Popup({ offset: 30 }).setText(place.name);
+
+    new tt.Marker(marker)
+        .setLngLat(place.coordinates)
+        .setPopup(popup)
+        .addTo(tomtomMap);
+}
+
+
+function onCardMouseEnter(event) {
+    const cardId = event.currentTarget.dataset.cardId;
+    cards.querySelector(`.card[data-card-id="${cardId}"]`).classList.add('hover');
+}
+
+
+function onCardMouseLeave(event) {
+    const cardId = event.currentTarget.dataset.cardId;
+    cards.querySelector(`.card[data-card-id="${cardId}"]`).classList.remove('hover');
+}
+
+
+
+
+
 
 
 function renderTravelTitle() {
     travel.querySelector('.travel-name').innerHTML = `il tuo viaggio a <b>${travelFormData.location}</b>`;
     travel.querySelector('.travel-detail').innerHTML = `in <b>${travelFormData.season}</b>, <b>${travelFormData.company}</b>`;
 }
-
 
 
 
@@ -137,7 +193,7 @@ function stageComponent(stage, index) {
     
         <p>
             <b>Luoghi:</b>
-           ${stage.place.map(function (place) {
+           ${stage.places.map(function (place) {
         return place.name;
     }).join(', ')}
         </p>

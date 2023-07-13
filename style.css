@@ -179,6 +179,12 @@ header h1 {
     border-radius: 24px;
 }
 
+#map{
+    height: 500px;
+}
+
+
+
 
 
 /* ! CARD SECTION */
@@ -206,6 +212,12 @@ header h1 {
     font-size: 20px;
     font-weight: 700;
     color: #5b17c9;
+}
+
+.card:hover, 
+.card.hover{
+    transform: scale(1.05);
+    transform-origin: center;
 }
 
 
@@ -238,6 +250,8 @@ header h1 {
     .travel-image {
         height: 100%;
     }
+
+ 
 
 }
 

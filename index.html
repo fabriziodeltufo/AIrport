@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" data-state="travel">
+<html lang="it" data-state="wizard">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- TOM TOM API STYLE -->
+    <link rel="stylesheet" type="text/css"
+        href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css" />
 
 </head>
 
@@ -77,7 +81,7 @@
                     </div>
 
                     <div class="travel-image">
-                        <img src="https://unsplash.it/512" alt="immagine di viaggio">
+                        <!-- <img src="https://unsplash.it/512" alt="immagine di viaggio"> -->
                     </div>
 
                 </div>
@@ -85,47 +89,30 @@
                 <div class="travel-content">
                     <div class="travel-plan">
                         <div class="cards">
-
-                            <div class="card">
-                                <div class="card-day">giorno 1</div>
-                                <div class="card-title">mangia e bevi</div>
-                                <div class="card-content">
-                                    <p>
-                                        <b>Luoghi:</b>
-                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
-                                        etcetcetc
-                                    </p>
-                                    <p>
-                                        <b>Curiosita':</b>
-                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
-                                        etcetcetc
-                                    </p>
+                            <template>
+                                <div class="card">
+                                    <div class="card-day">giorno 1</div>
+                                    <div class="card-title">mangia e bevi</div>
+                                    <div class="card-content">
+                                        <p>
+                                            <b>Luoghi:</b>
+                                            lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                            etcetcetc
+                                        </p>
+                                        <p>
+                                            <b>Curiosita':</b>
+                                            lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
+                                            etcetcetc
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-day">giorno 2</div>
-                                <div class="card-title">nuota e canta</div>
-                                <div class="card-content">
-                                    <p>
-                                        <b>Luoghi:</b>
-                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
-                                        etcetcetc
-                                    </p>
-                                    <p>
-                                        <b>Curiosita':</b>
-                                        lorem ipsum etc etcetcetc lorem ipsum etc etcetcetc lorem ipsum etc
-                                        etcetcetc
-                                    </p>
-                                </div>
-                            </div>
-
+                            </template>
                         </div>
                     </div>
 
                     <div class="travel-map">
                         <div id="map"></div>
-                        MAP
+                        <!-- MAP -->
                     </div>
 
                 </div>
@@ -136,7 +123,10 @@
         </div>
     </main>
 
+    <!-- TOM TOM API -->
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js"></script>
 
+    <!-- custom config -->
     <script src="./config.js"></script>
     <script src="./script.js"></script>
 </body>
