@@ -1,2 +1,2 @@
-const API_KEY = '';
-const TOMTOM_KEY = '';
+const API_KEY = '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';
+const TOMTOM_KEY = '8174B3Y4wpzIGdEteAJzSMG19pZSjDgP';

@@ -52,26 +52,26 @@ async function createTravel() {
 
 
     const prompt = `\
-    Organizza un weekend di 2 giorni a ${travelFormData.location} in ${travelFormData.season}. 
-    Per ogni tappa dammi 1 titolo spiritoso, 2 luoghi da visitare con le coordinate e qualche 
-    curiosità del luoghi. Le tue risposte sono solo in formato JSON come questo esempio:
+    Organize a weekend of 2 days at ${travelFormData.location} in ${travelFormData.season}.
+     For each stage give me 1 witty title only, 2 places to visit with coordinates and some
+     curiosities of the places. Your responses are just in JSON format like this example:
     
     ###
     
     {
         "stages": [{
-            "title": "Titolo della tappa",
+            "title": "Stage Title",
             "places": [
                 {
-                    "name": "Nome luogo 1",
+                    "name": "LOCATION NAME 1",
                     "coordinates": ["lng", "lat"]             
                 },
                 {
-                    "name": "Nome luogo 2",
+                    "name": "LOCATION NAME 2",
                     "coordinates": ["lng", "lat"]             
                 }        
             ],
-            "facts": "curiosità sul luogo in breve"
+            "facts": "Curiosities about the place in brief"
         }]
     }
     
@@ -94,7 +94,7 @@ async function createTravel() {
 
     const travelImageResponse = await makeRequest(OPENAI.IMAGE_ENDPOINT, {
 
-        prompt: `Un weekend a ${travelFormData.location} in ${travelFormData.season} `,
+        prompt: `A weekend at ${travelFormData.location} in ${travelFormData.season} `,
         n: 1,
         size: '512x512'
     });
@@ -102,7 +102,7 @@ async function createTravel() {
     travelPlan.imageUrl = travelImageResponse.data[0].url;
     console.log(travelPlan.imageUrl);
 
-    travel.querySelector('.travel-image').innerHTML = `<img src="${travelPlan.imageUrl}" alt="foto viaggio">`;
+    travel.querySelector('.travel-image').innerHTML = `<img src="${travelPlan.imageUrl}" alt="Travel Image">`;
 }
 
 
@@ -171,7 +171,7 @@ function onCardMouseLeave(event) {
 
 
 function renderTravelTitle() {
-    travel.querySelector('.travel-name').innerHTML = `il tuo viaggio a <b>${travelFormData.location}</b>`;
+    travel.querySelector('.travel-name').innerHTML = `Your trip to <b>${travelFormData.location}</b>`;
     travel.querySelector('.travel-detail').innerHTML = `in <b>${travelFormData.season}</b>, <b>${travelFormData.company}</b>`;
 }
 
@@ -191,19 +191,19 @@ function stageComponent(stage, index) {
     const card = template.content.cloneNode(true).querySelector('.card');
     card.dataset.cardId = index;
 
-    card.querySelector('.card-day').innerText = `Giorno ${index + 1}`;
+    card.querySelector('.card-day').innerText = `STAGE ${index + 1}`;
     card.querySelector('.card-title').innerText = stage.title;
 
     card.querySelector('.card-content').innerHTML = `\
     
         <p>
-            <b>Luoghi:</b>
+            <b>Location:</b>
            ${stage.places.map(function (place) {
         return place.name;
     }).join(', ')}
         </p>
         <p>
-            <b>Curiosita':</b>
+            <b>Information:</b>
           ${stage.facts}
         </p> `;
 
