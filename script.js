@@ -31,7 +31,13 @@ form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
     event.preventDefault();
     setTravelFormData();
-    createTravel();
+    setAppState('loading');
+
+    if (API_KEY != '') {
+        createTravel();
+    } else {
+        alert('YOU HAVE TO REGISTER AN API KEY AND TOM TOM API KEY TO USE THIS WEB APP AND \nINSERT THEM INTO A FILE NAMED config.js\n ie: const API_KEY = "value"; ');
+    }
 }
 
 
@@ -44,7 +50,6 @@ function setTravelFormData() {
 
 async function createTravel() {
 
-    setAppState('loading');
 
     const prompt = `\
     Organizza un weekend di 2 giorni a ${travelFormData.location} in ${travelFormData.season}. 
